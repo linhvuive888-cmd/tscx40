@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trạm Sạc Cảm Xúc 4.0 – Trường THPT Đakrông</title>
+  <style>
+    :root {
+      --primary: #1b6b52;
+      --primary-light: #e6f4ef;
+      --primary-dark: #124c3a;
+      --accent: #e07a5f;
+      --bg: #f6faf8;
+      --card: #ffffff;
+      --text: #1f2d28;
+      --muted: #5a6d66;
+      --border: #dce8e3;
+      --radius: 16px;
+      --shadow: 0 6px 20px rgba(27, 107, 82, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding-bottom: 40px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    /* Hero Banner */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #2a8c6c 100%);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 28px 22px;
+      text-align: center;
+      box-shadow: 0 10px 28px rgba(27, 107, 82, 0.22);
+      margin-bottom: 20px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      font-size: 26px;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 15px;
+      opacity: 0.95;
+      margin-bottom: 18px;
+    }
+
+    .trust-box {
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 13.5px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      width: 100%;
+      background: #ffffff;
+      color: var(--primary-dark);
+      font-weight: 700;
+      font-size: 16px;
+      text-decoration: none;
+      padding: 14px 20px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .btn-primary:active {
+      transform: scale(0.98);
+    }
+
+    /* Section & Cards */
+    .section-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin: 24px 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      font-size: 16px;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .card p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #e9f7ef;
+      color: #15603e;
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 5px 11px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+      border: 1px solid #c6ebd6;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #1ea866;
+      display: inline-block;
+    }
+
+    .btn-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    @media (max-width: 480px) {
+      .btn-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      text-align: center;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-green {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .btn-soft {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+    }
+
+    .btn-warm {
+      background: #fff1ec;
+      color: #b84a2d;
+      border: 1px solid #f7d5ca;
+    }
+
+    .btn-emergency {
+      background: #d93829;
+      color: #ffffff;
+      width: 100%;
+      font-size: 15px;
+      padding: 14px;
+    }
+
+    /* Test Group Blocks (Khám phá bản thân) */
+    .test-group {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+
+    .test-group:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .test-group-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 3px;
+    }
+
+    .test-group-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    /* Schedule & Privacy Info */
+    .info-list {
+      list-style: none;
+      margin-bottom: 14px;
+    }
+
+    .info-list li {
+      font-size: 13.8px;
+      color: var(--text);
+      padding: 8px 10px;
+      background: var(--bg);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      margin-bottom: 8px;
+    }
+
+    .info-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .info-list strong {
+      color: var(--primary-dark);
+    }
+
+    .privacy-note {
+      background: #fffaf2;
+      border: 1px solid #f2dfc2;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 13.5px;
+      color: #6b4e1e;
+      margin-top: 12px;
+    }
+
+    /* Breathing 4-7-8 Widget */
+    .breath-widget {
+      text-align: center;
+      background: linear-gradient(180deg, #eef8f4 0%, #ffffff 100%);
+    }
+
+    .breath-steps-bar {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .step-chip {
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: #ffffff;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      transition: all 0.25s ease;
+    }
+
+    .step-chip.active-inhale {
+      background: #1b6b52;
+      color: #ffffff;
+      border-color: #1b6b52;
+    }
+
+    .step-chip.active-hold {
+      background: #2f7d9c;
+      color: #ffffff;
+      border-color: #2f7d9c;
+    }
+
+    .step-chip.active-exhale {
+      background: #d97b54;
+      color: #ffffff;
+      border-color: #d97b54;
+    }
+
+    .breath-circle-wrap {
+      height: 168px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 6px 0 10px;
+    }
+
+    .breath-circle {
+      width: 102px;
+      height: 102px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #38a883 0%, var(--primary) 100%);
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      box-shadow: 0 0 0 10px rgba(27, 107, 82, 0.12);
+      transform: scale(1);
+      transition: transform 0.6s ease, background 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .breath-circle.inhale {
+      transform: scale(1.42);
+      background: radial-gradient(circle, #38a883 0%, #1b6b52 100%);
+      box-shadow: 0 0 0 16px rgba(27, 107, 82, 0.16);
+      transition: transform 4s ease-out, background 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .breath-circle.hold {
+      transform: scale(1.42);
+      background: radial-gradient(circle, #489fc0 0%, #2b6f8a 100%);
+      box-shadow: 0 0 0 18px rgba(47, 125, 156, 0.18);
+      transition: transform 0.2s linear, background 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .breath-circle.exhale {
+      transform: scale(0.95);
+      background: radial-gradient(circle, #e89978 0%, #c96943 100%);
+      box-shadow: 0 0 0 8px rgba(217, 123, 84, 0.14);
+      transition: transform 8s ease-in-out, background 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .breath-phase {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .breath-count {
+      font-size: 26px;
+      line-height: 1.15;
+    }
+
+    .breath-cycle-info {
+      font-size: 13px;
+      color: var(--primary-dark);
+      font-weight: 600;
+      min-height: 22px;
+      margin-bottom: 12px;
+    }
+
+    .breath-controls {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .breath-audio-legend {
+      font-size: 12.5px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      padding: 8px 12px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    /* Worry Release Box */
+    .worry-box textarea {
+      width: 100%;
+      min-height: 96px;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--text);
+      resize: vertical;
+      margin-bottom: 10px;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .worry-box textarea:focus {
+      outline: 2px solid var(--primary);
+      background: #ffffff;
+    }
+
+    .worry-box textarea.fading {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+
+    .worry-msg {
+      font-size: 13.5px;
+      color: var(--primary-dark);
+      background: var(--primary-light);
+      padding: 10px 12px;
+      border-radius: 10px;
+      margin-top: 10px;
+      display: none;
+    }
+
+    /* Podcast List */
+    .podcast-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px;
+      background: var(--bg);
+      border-radius: 12px;
+      margin-bottom: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .podcast-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .podcast-info strong {
+      display: block;
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .podcast-info span {
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+
+    .btn-mini {
+      padding: 8px 12px;
+      font-size: 13px;
+      border-radius: 10px;
+      white-space: nowrap;
+    }
+
+    /* Custom Accordion Cẩm nang (Đóng mặc định 100%, bấm mới mở) */
+    .accordion-hint {
+      font-size: 13px;
+      color: var(--muted);
+      margin: -6px 0 12px;
+    }
+
+    .accordion-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(27, 107, 82, 0.05);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .accordion-item.open {
+      border-color: var(--primary);
+      box-shadow: 0 6px 18px rgba(27, 107, 82, 0.12);
+    }
+
+    .accordion-header {
+      width: 100%;
+      background: transparent;
+      border: none;
+      padding: 15px 16px;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 14.5px;
+      color: var(--primary-dark);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .accordion-header:hover {
+      background: #f9fcfb;
+    }
+
+    .accordion-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1;
+      flex-shrink: 0;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .accordion-item.open .accordion-icon {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .accordion-body {
+      display: none;
+      padding: 12px 16px 16px;
+      font-size: 14px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      background: #fcfefd;
+    }
+
+    .accordion-item.open .accordion-body {
+      display: block;
+      animation: fadeSlide 0.25s ease;
+    }
+
+    @keyframes fadeSlide {
+      from {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .accordion-body ul {
+      padding-left: 18px;
+      margin-top: 6px;
+    }
+
+    .accordion-body li {
+      margin-bottom: 6px;
+    }
+
+    .accordion-body li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: #1f2d28;
+      color: #ffffff;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-size: 13.5px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 999;
+      max-width: 90%;
+      text-align: center;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- 1. MẶT TIỀN (HERO) -->
+    <header class="hero">
+      <div class="badge">TRƯỜNG THPT ĐAKRÔNG • TỔ TƯ VẤN HỌC ĐƯỜNG</div>
+      <h1>🔋 Trạm Sạc Cảm Xúc 4.0</h1>
+      <p>Không gian an toàn để bạn dừng lại, hít thở, lắng nghe chính mình và tìm người đồng hành.</p>
+      <div class="trust-box">
+        🔒 <strong>Cam kết 3 KHÔNG:</strong> Không phán xét • Không tự ý tiết lộ cho BGH/GVCN/phụ huynh (trừ tình huống khẩn cấp đe dọa an toàn) • Không bắt buộc ghi tên thật hay làm hồ sơ công khai.
+      </div>
+      <a href="#" class="btn-primary" data-link="khaoSat">
+        ✨ Kiểm tra "Pin Cảm Xúc" đầu năm (2 phút)
+      </a>
+    </header>
+
+    <!-- 2. HÒM THƯ ẨN DANH & KẾT NỐI KÍN ĐÁO -->
+    <div class="section-title">💌 Trút bầu tâm sự &amp; Kết nối kín đáo</div>
+    <div class="card">
+      <div class="status-pill">
+        <span class="status-dot"></span> Hòm thư được kiểm tra định kỳ mỗi ngày
+      </div>
+      <h3>Ngại đi qua hành lang khu Hiệu bộ? Hãy kết nối từ xa!</h3>
+      <p>Bạn không cần phải bước vào phòng hay đối mặt với ánh nhìn của bất kỳ ai. Chọn cách khiến bạn thấy an tâm nhất:</p>
+      <div class="btn-grid">
+        <a href="#" class="btn btn-green" data-link="homThuAnDanh">📮 Gửi thư ẩn danh</a>
+        <a href="#" class="btn btn-soft" data-link="nhanTinRieng">💬 Nhắn tin riêng (Messenger)</a>
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="#" class="btn btn-warm" style="width: 100%;" data-link="datLich11">
+          📅 Đặt lịch gặp trực tiếp 1-1 (Chọn giờ &amp; đi cùng bạn thân nếu muốn)
+        </a>
+      </div>
+      <div class="privacy-note">
+        <strong>💡 Mẹo giữ riêng tư khi gặp trực tiếp:</strong> Khi bạn đặt lịch qua nút trên, Cô sẽ chủ động mở sẵn phòng đúng giờ hẹn hoặc sắp xếp trao đổi kín đáo trong giờ hành chính để bạn hoàn toàn thoải mái.
+      </div>
+    </div>
+
+    <!-- 3. LỊCH TRỰC & THÔNG TIN LIÊN HỆ MINH BẠCH -->
+    <div class="section-title">🕒 Lịch trực &amp; Thông tin liên hệ Phòng Tư vấn</div>
+    <div class="card">
+      <h3>Công khai lịch hoạt động – Luôn có người lắng nghe</h3>
+      <ul class="info-list">
+        <li><strong>👩‍🏫 Phụ trách thường trực:</strong> Cô Nguyễn Thị Lê Mộng Linh (Tổ phó thường trực Tổ Tư vấn học đường)</li>
+        <li><strong>🚪 Lịch mở cửa Phòng Tư vấn:</strong> Giờ ra chơi sáng &amp; chiều <strong>Thứ 3 &amp; Thứ 6</strong> hàng tuần. Các ngày Thứ 2, Thứ 4, Thứ 5 và khung giờ hành chính khác: tiếp nhận theo lịch hẹn trước qua mã QR / Zalo.</li>
+        <li><strong>📲 Kênh trực tuyến (Hòm thư / Messenger):</strong> Tiếp nhận 24/7, cam kết đọc và phản hồi trong vòng 24 giờ (ưu tiên xử lý ngay với các ca cần hỗ trợ sớm).</li>
+        <li><strong>🎙️ Phản hồi chung:</strong> Các tâm sự ẩn danh gửi về Hòm thư (nếu bạn đồng ý) sẽ được giải đáp giấu tên trên Kênh Phát thanh "Chạm".</li>
+      </ul>
+      <div class="btn-grid">
+        <a href="#" class="btn btn-soft" data-link="hotlineCo">📞 Gọi / Zalo Cô phụ trách</a>
+        <a href="#" class="btn btn-soft" data-link="gopYTramSac">📝 Góp ý cải thiện Phòng Tư vấn</a>
+      </div>
+    </div>
+
+    <!-- 4. GÓC CHỮA LÀNH: THỞ 4-7-8 & THẢ TRÔI MUỘN PHIỀN -->
+    <div class="section-title">🌿 Góc Chữa lành &amp; Cân bằng cảm xúc</div>
+
+    <!-- Vòng tròn thở 4-7-8 chạy trực tiếp kèm âm thanh dẫn nhịp -->
+    <div class="card breath-widget">
+      <h3>Hạ nhiệt lo âu trong 1 phút (Kỹ thuật thở 4-7-8)</h3>
+      <p>Khi tim đập nhanh trước giờ thi, đang rất giận hoặc thấy ngột ngạt, hãy bấm Bắt đầu, nhắm mắt lại và lắng nghe tiếng chuông dẫn nhịp.</p>
+
+      <div class="breath-steps-bar">
+        <span class="step-chip" id="chipInhale">1. Hít vào (4s)</span>
+        <span class="step-chip" id="chipHold">2. Giữ hơi (7s)</span>
+        <span class="step-chip" id="chipExhale">3. Thở ra (8s)</span>
+      </div>
+
+      <div class="breath-circle-wrap">
+        <div class="breath-circle" id="breathCircle">
+          <span class="breath-phase" id="breathPhase">Sẵn sàng</span>
+          <span class="breath-count" id="breathCount">4-7-8</span>
+        </div>
+      </div>
+
+      <div class="breath-cycle-info" id="breathCycleInfo">
+        Bấm "Bắt đầu hít thở" để chạy lặp liên tục cho đến khi bạn bấm dừng
+      </div>
+
+      <div class="breath-controls">
+        <button type="button" class="btn btn-green" id="breathBtn" style="min-width: 175px;">
+          ▶ Bắt đầu hít thở
+        </button>
+        <button type="button" class="btn btn-soft" id="soundToggleBtn">
+          🔊 Âm thanh: Bật
+        </button>
+      </div>
+
+      <div class="breath-audio-legend">
+        <strong>🎧 Tín hiệu âm thanh khi nhắm mắt:</strong><br />
+        • <strong>Chuông ngân đi lên:</strong> Hít vào (4 giây) &nbsp;|&nbsp;
+        <strong>Chuông trầm êm:</strong> Giữ hơi (7 giây) &nbsp;|&nbsp;
+        <strong>Chuông ngân đi xuống:</strong> Thở ra (8 giây)<br />
+        • <strong>Tiếng gõ gỗ nhẹ (tíc-tắc):</strong> Đếm từng giây lùi kèm nhạc nền thư giãn dịu nhẹ.
+      </div>
+    </div>
+
+    <!-- Góc viết rồi xóa (100% riêng tư trên thiết bị) -->
+    <div class="card worry-box">
+      <h3>🍃 Góc "Thả trôi muộn phiền" (Chỉ mình bạn thấy)</h3>
+      <p>Có điều gì khiến bạn bực bội, ấm ức nhưng không muốn kể cho ai? Cứ gõ hết vào đây rồi bấm nút thả trôi. <strong>Nội dung không hề gửi đi đâu cả</strong> và sẽ biến mất hoàn toàn.</p>
+      <textarea id="worryInput" placeholder="Viết ra hết những gì đang làm bạn nặng lòng lúc này..."></textarea>
+      <button type="button" class="btn btn-warm" id="releaseBtn" style="width: 100%;">
+        🍃 Thả trôi muộn phiền này đi
+      </button>
+      <div class="worry-msg" id="worryMsg"></div>
+    </div>
+
+    <!-- Kênh Phát thanh học đường "Chạm" -->
+    <div class="card">
+      <h3>🎙️ Kênh Phát thanh học đường "Chạm"</h3>
+      <p>Nghe lại các số phát thanh giờ ra chơi và chuyên mục giải đáp thư ẩn danh bất cứ lúc nào.</p>
+      <div class="podcast-item">
+        <div class="podcast-info">
+          <strong>Số 01: Chào Trạm Sạc – Giữ nhịp bình yên trước mùa thi</strong>
+          <span>Thời lượng: ~10 phút • Phát sóng giờ ra chơi</span>
+        </div>
+        <a href="#" class="btn btn-soft btn-mini" data-link="podcast1">🎧 Nghe</a>
+      </div>
+      <div class="podcast-item">
+        <div class="podcast-info">
+          <strong>Số 02: Khi niềm tin rạn vỡ – Làm sao để yêu trong bình yên?</strong>
+          <span>Thời lượng: ~10 phút • Giải đáp Hòm thư ẩn danh</span>
+        </div>
+        <a href="#" class="btn btn-soft btn-mini" data-link="podcast2">🎧 Nghe</a>
+      </div>
+    </div>
+
+    <!-- Cẩm nang tâm lý bỏ túi (Đóng gọn mặc định, chạm mới mở) -->
+    <div class="section-title">📖 Cẩm nang tâm lý số bỏ túi</div>
+    <p class="accordion-hint">👇 Chạm vào từng mục (hoặc dấu +) để mở xem bí kíp bên trong:</p>
+
+    <div class="accordion-item">
+      <button type="button" class="accordion-header" aria-expanded="false">
+        <span>1. Quy tắc 5N khi nóng giận hoặc mâu thuẫn</span>
+        <span class="accordion-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        Trước khi buông lời làm tổn thương bạn bè hay người thân, hãy đi qua 5 nhịp:
+        <ul>
+          <li><strong>Ngưng:</strong> Dừng lại 5 giây, không phản ứng ngay.</li>
+          <li><strong>Nghe:</strong> Lắng nghe nhịp thở của mình và lời người đối diện.</li>
+          <li><strong>Ngẫm:</strong> Tự hỏi điều gì thực sự làm mình khó chịu?</li>
+          <li><strong>Nghĩ:</strong> Nếu nói ra câu này, chuyện sẽ tốt lên hay tệ đi?</li>
+          <li><strong>Nói:</strong> Nói bằng sự bình tĩnh, rõ ràng và tôn trọng.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button type="button" class="accordion-header" aria-expanded="false">
+        <span>2. Chiến thuật "Đối tác" khi nói chuyện với bố mẹ</span>
+        <span class="accordion-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        Thay vì đối đầu hay im lặng thu mình, hãy thử nói với bố mẹ theo cấu trúc 3 bước:
+        <ul>
+          <li><strong>Bước 1 (Ghi nhận):</strong> "Con biết bố mẹ lo cho tương lai của con..."</li>
+          <li><strong>Bước 2 (Chia sẻ cảm xúc):</strong> "Nhưng dạo này con đang thấy khá áp lực về..."</li>
+          <li><strong>Bước 3 (Đề xuất):</strong> "Con muốn cùng bố mẹ bàn cách để con học/chọn nghề tốt hơn."</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button type="button" class="accordion-header" aria-expanded="false">
+        <span>3. Mẹo ngủ ngon &amp; bớt lệ thuộc điện thoại ban đêm</span>
+        <span class="accordion-icon">+</span>
+      </button>
+      <div class="accordion-body">
+        <ul>
+          <li>Đặt điện thoại cách giường ít nhất 1 sải tay trước khi ngủ 30 phút.</li>
+          <li>Bật chế độ "Không làm phiền" sau 22h30 để não bộ được nghỉ ngơi thật sự.</li>
+          <li>Nếu khó ngủ, hãy mở vòng tròn thở 4-7-8 ở trên và làm 4 chu kỳ liên tiếp.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 5. GÓC KHÁM PHÁ BẢN THÂN & ĐỊNH HƯỚNG NGHỀ NGHIỆP -->
+    <div class="section-title">🧭 Khám phá bản thân &amp; Định hướng nghề nghiệp</div>
+    <div class="card">
+      <h3>Hiểu mình – Chọn nghề vững bước tương lai</h3>
+      <p>Khám phá sở thích, năng lực, tính cách và mục đích sống qua 4 bộ công cụ trắc nghiệm khoa học.</p>
+
+      <!-- Holland -->
+      <div class="test-group">
+        <div class="test-group-title">🎯 Holland – Khám phá Sở thích nghề nghiệp</div>
+        <div class="test-group-sub">Bạn thích làm gì? (Chọn 1 trong 2 bản dưới đây)</div>
+        <div class="btn-grid">
+          <a href="#" class="btn btn-soft" data-link="testHolland1">🔗 Bản 1 (Sông An)</a>
+          <a href="#" class="btn btn-soft" data-link="testHolland2">🔗 Bản 2 (RightPath)</a>
+        </div>
+      </div>
+
+      <!-- Đa trí tuệ -->
+      <div class="test-group">
+        <div class="test-group-title">🧠 Đa trí tuệ – Khám phá Năng lực</div>
+        <div class="test-group-sub">Bạn giỏi điều gì? (Chọn 1 trong 2 bản dưới đây)</div>
+        <div class="btn-grid">
+          <a href="#" class="btn btn-soft" data-link="testDatritue1">🔗 Bản 1 (Sông An)</a>
+          <a href="#" class="btn btn-soft" data-link="testDatritue2">📊 Bản 2 (Google Sheets)</a>
+        </div>
+      </div>
+
+      <!-- DISC -->
+      <div class="test-group">
+        <div class="test-group-title">🎭 DISC – Khám phá Tính cách</div>
+        <div class="test-group-sub">Bạn hành xử thế nào?</div>
+        <a href="#" class="btn btn-soft" style="width: 100%;" data-link="testDISC">
+          ✨ Làm trắc nghiệm tính cách DISC
+        </a>
+      </div>
+
+      <!-- Ikigai -->
+      <div class="test-group">
+        <div class="test-group-title">🌸 Ikigai – Khám phá Mục đích sống / Điểm giao sự nghiệp</div>
+        <div class="test-group-sub">Giao điểm giữa điều bạn thích, bạn giỏi, thế giới cần và kiếm ra tiền</div>
+        <a href="#" class="btn btn-soft" style="width: 100%;" data-link="testIkigai">
+          🧭 Khám phá Ikigai của bạn
+        </a>
+      </div>
+    </div>
+
+    <!-- 6. PHÁP LUẬT, AN TOÀN & HỖ TRỢ KHẨN CẤP -->
+    <div class="section-title">🛡️ Pháp luật, An toàn &amp; Hỗ trợ khẩn cấp</div>
+    <div class="card">
+      <h3>Bạn không bao giờ phải đi một mình</h3>
+      <p>Rèn kỹ năng nhận diện ranh giới qua trò chơi tương tác, tra cứu quyền và nghĩa vụ của học sinh, hoặc gọi ngay đường dây nóng khi bạn hay bạn bè gặp nguy hiểm, bị bắt nạt, xâm hại.</p>
+      <div style="margin-bottom: 10px;">
+        <a href="#" class="btn btn-warm" style="width: 100%;" data-link="gameKyNang">
+          🎮 Game tương tác: Ranh giới an toàn &amp; Kỹ năng ứng xử
+        </a>
+      </div>
+      <div style="margin-bottom: 10px;">
+        <a href="#" class="btn btn-soft" style="width: 100%;" data-link="phapLuat">
+          ⚖️ Tìm hiểu Quyền &amp; Nghĩa vụ học sinh
+        </a>
+      </div>
+      <a href="tel:111" class="btn btn-emergency">
+        📞 Gọi Tổng đài Quốc gia Bảo vệ Trẻ em: 111 (Miễn phí 24/7)
+      </a>
+    </div>
+
+    <footer>
+      <strong>Tổ Tư vấn học đường &amp; Công tác xã hội – Trường THPT Đakrông</strong><br />
+      Trạm Sạc Cảm Xúc 4.0 • Luôn lắng nghe, bảo mật và đồng hành cùng bạn.
+    </footer>
+  </div>
+
+  <!-- Thông báo nhỏ khi link chưa cập nhật -->
+  <div class="toast" id="toast">Nội dung đang được Tổ Tư vấn cập nhật, bạn quay lại sau nhé! 🌿</div>
+
+  <script>
+    // =========================================================================
+    // KHU VỰC CÀI ĐẶT ĐƯỜNG DẪN (CÔ CHỈ CẦN DÁN LINK VÀO GIỮA DẤU NGOẶC KÉP)
+    // =========================================================================
+    const LINKS = {
+      khaoSat: "https://forms.gle/7DVAs7EYxgaxDtsg6",
+      homThuAnDanh: "https://forms.gle/pbCDZtn2ydfuYnji9",
+      nhanTinRieng: "https://m.me/linhvvth",
+      datLich11: "https://forms.gle/aU61QCfY6xEYHzwRA",
+      hotlineCo: "https://zalo.me/0833994268",
+      gopYTramSac: "https://forms.gle/pbCDZtn2ydfuYnji9",
+      podcast1: "#",
+      podcast2: "#",
+      testHolland1: "https://tracnghiem.huongnghiepsongan.com/",
+      testHolland2: "https://rightpath.edu.vn/trac-nghiem-ban-than/trac-nghiem-so-thich-holland",
+      testDatritue1: "https://tracnghiem.huongnghiepsongan.com/assess/tracnghiem/MIPQVI",
+      testDatritue2: "https://docs.google.com/spreadsheets/d/1dYR7dB8RisWV5EvdAheiemqUAEob9wh8s77cpL96URs/edit?gid=0#gid=0",
+      testDISC: "https://rightpath.edu.vn/trac-nghiem-ban-than/trac-nghiem-tinh-cach-disc",
+      testIkigai: "https://ikigaitest.com/vi/",
+      gameKyNang: "#",
+      phapLuat: "#"
+    };
+
+    // Tự động gắn link vào các nút bấm
+    const toast = document.getElementById("toast");
+    let toastTimer;
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 2600);
+    }
+
+    document.querySelectorAll("[data-link]").forEach((el) => {
+      const key = el.getAttribute("data-link");
+      const url = LINKS[key];
+      if (url && url !== "#") {
+        el.href = url;
+        if (!url.startsWith("tel:")) {
+          el.target = "_blank";
+          el.rel = "noopener noreferrer";
+        }
+      } else {
+        el.addEventListener("click", (e) => {
+          e.preventDefault();
+          showToast("Kênh này đang được Tổ Tư vấn cập nhật, bạn quay lại sau chút nhé! 🌿");
+        });
+      }
+    });
+
+    // =========================================================================
+    // TÍNH NĂNG ĐÓNG/MỞ CẨM NANG TÂM LÝ (ACCORDION – BẤM MỚI MỞ)
+    // =========================================================================
+    const accordionItems = document.querySelectorAll(".accordion-item");
+
+    accordionItems.forEach((item) => {
+      const header = item.querySelector(".accordion-header");
+      const icon = item.querySelector(".accordion-icon");
+
+      header.addEventListener("click", () => {
+        const isAlreadyOpen = item.classList.contains("open");
+
+        // Đóng tất cả các mục khác để trang luôn gọn gàng
+        accordionItems.forEach((other) => {
+          other.classList.remove("open");
+          other.querySelector(".accordion-header").setAttribute("aria-expanded", "false");
+          other.querySelector(".accordion-icon").textContent = "+";
+        });
+
+        // Nếu mục vừa bấm đang đóng thì mở ra
+        if (!isAlreadyOpen) {
+          item.classList.add("open");
+          header.setAttribute("aria-expanded", "true");
+          icon.textContent = "−";
+        }
+      });
+    });
+
+    // =========================================================================
+    // HỆ THỐNG ÂM THANH THƯ GIÃN (WEB AUDIO API – CHẠY OFFLINE 100%)
+    // =========================================================================
+    let audioCtx = null;
+    let soundEnabled = true;
+    let ambientNodes = [];
+    let ambientMasterGain = null;
+
+    function initAudio() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) {
+          audioCtx = new AudioContextClass();
+        }
+      }
+      if (audioCtx && audioCtx.state === "suspended") {
+        audioCtx.resume();
+      }
+    }
+
+    function startAmbientPad() {
+      if (!audioCtx || !soundEnabled) return;
+      stopAmbientPad();
+
+      const now = audioCtx.currentTime;
+      ambientMasterGain = audioCtx.createGain();
+      ambientMasterGain.gain.setValueAtTime(0.0001, now);
+      ambientMasterGain.gain.exponentialRampToValueAtTime(0.035, now + 2.0);
+      ambientMasterGain.connect(audioCtx.destination);
+
+      const freqs = [130.81, 196.0, 246.94, 293.66];
+      freqs.forEach((f, idx) => {
+        const osc = audioCtx.createOscillator();
+        const filter = audioCtx.createBiquadFilter();
+        osc.type = idx % 2 === 0 ? "sine" : "triangle";
+        osc.frequency.setValueAtTime(f, now);
+
+        filter.type = "lowpass";
+        filter.frequency.setValueAtTime(420, now);
+
+        osc.connect(filter);
+        filter.connect(ambientMasterGain);
+        osc.start(now);
+        ambientNodes.push(osc);
+      });
+    }
+
+    function stopAmbientPad() {
+      if (ambientMasterGain && audioCtx) {
+        const now = audioCtx.currentTime;
+        try {
+          ambientMasterGain.gain.cancelScheduledValues(now);
+          ambientMasterGain.gain.setValueAtTime(Math.max(ambientMasterGain.gain.value, 0.0001), now);
+          ambientMasterGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.4);
+        } catch (e) {}
+      }
+      const nodesToStop = ambientNodes;
+      ambientNodes = [];
+      setTimeout(() => {
+        nodesToStop.forEach((osc) => {
+          try { osc.stop(); osc.disconnect(); } catch (e) {}
+        });
+      }, 450);
+    }
+
+    function playChimeNote(freq, startOffset, duration, volume) {
+      if (!audioCtx || !soundEnabled) return;
+      const now = audioCtx.currentTime + startOffset;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(freq, now);
+
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.linearRampToValueAtTime(volume, now + 0.04);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + duration + 0.05);
+    }
+
+    function playPhaseCue(phaseCls) {
+      if (!soundEnabled) return;
+      if (phaseCls === "inhale") {
+        playChimeNote(523.25, 0, 1.1, 0.14);
+        playChimeNote(659.25, 0.16, 1.4, 0.12);
+      } else if (phaseCls === "hold") {
+        playChimeNote(392.0, 0, 1.5, 0.13);
+      } else if (phaseCls === "exhale") {
+        playChimeNote(659.25, 0, 1.0, 0.12);
+        playChimeNote(523.25, 0.2, 1.6, 0.13);
+      }
+    }
+
+    function playSecondTick(phaseCls) {
+      if (!audioCtx || !soundEnabled) return;
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      const freq = phaseCls === "inhale" ? 760 : phaseCls === "hold" ? 560 : 440;
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(freq, now);
+      osc.frequency.exponentialRampToValueAtTime(freq * 0.65, now + 0.07);
+
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.linearRampToValueAtTime(0.065, now + 0.008);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.085);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.1);
+    }
+
+    // =========================================================================
+    // TÍNH NĂNG ĐỒNG HỒ HÍT THỞ 4-7-8 (ĐẾM LÙI TỪNG GIÂY & LẶP LIÊN TỤC)
+    // =========================================================================
+    const breathCircle = document.getElementById("breathCircle");
+    const breathPhase = document.getElementById("breathPhase");
+    const breathCount = document.getElementById("breathCount");
+    const breathCycleInfo = document.getElementById("breathCycleInfo");
+    const breathBtn = document.getElementById("breathBtn");
+    const soundToggleBtn = document.getElementById("soundToggleBtn");
+
+    const chipInhale = document.getElementById("chipInhale");
+    const chipHold = document.getElementById("chipHold");
+    const chipExhale = document.getElementById("chipExhale");
+
+    let isBreathing = false;
+    let breathTimer = null;
+    let currentStepIndex = 0;
+    let currentSecLeft = 4;
+    let cycleCount = 1;
+
+    const steps = [
+      { label: "Hít vào", seconds: 4, cls: "inhale", chip: chipInhale, chipCls: "active-inhale" },
+      { label: "Giữ hơi", seconds: 7, cls: "hold", chip: chipHold, chipCls: "active-hold" },
+      { label: "Thở ra", seconds: 8, cls: "exhale", chip: chipExhale, chipCls: "active-exhale" }
+    ];
+
+    function clearStepChips() {
+      chipInhale.className = "step-chip";
+      chipHold.className = "step-chip";
+      chipExhale.className = "step-chip";
+    }
+
+    function renderPhaseStart() {
+      const s = steps[currentStepIndex];
+      clearStepChips();
+      s.chip.classList.add(s.chipCls);
+
+      breathCircle.className = "breath-circle " + s.cls;
+      breathPhase.textContent = s.label;
+      breathCount.textContent = currentSecLeft;
+      breathCycleInfo.textContent = `Chu kỳ ${cycleCount} • ${s.label} (${currentSecLeft} giây)`;
+
+      playPhaseCue(s.cls);
+    }
+
+    function tickBreathing() {
+      if (!isBreathing) return;
+      currentSecLeft--;
+
+      if (currentSecLeft <= 0) {
+        currentStepIndex = (currentStepIndex + 1) % steps.length;
+        if (currentStepIndex === 0) {
+          cycleCount++;
+        }
+        currentSecLeft = steps[currentStepIndex].seconds;
+        renderPhaseStart();
+      } else {
+        const s = steps[currentStepIndex];
+        breathCount.textContent = currentSecLeft;
+        breathCycleInfo.textContent = `Chu kỳ ${cycleCount} • ${s.label} (còn ${currentSecLeft} giây)`;
+        playSecondTick(s.cls);
+      }
+
+      breathTimer = setTimeout(tickBreathing, 1000);
+    }
+
+    function startBreathing() {
+      initAudio();
+      isBreathing = true;
+      currentStepIndex = 0;
+      currentSecLeft = steps[0].seconds;
+      cycleCount = 1;
+
+      breathBtn.textContent = "⏹ Dừng lại";
+      breathBtn.classList.remove("btn-green");
+      breathBtn.classList.add("btn-warm");
+
+      startAmbientPad();
+      breathCircle.className = "breath-circle";
+      void breathCircle.offsetWidth;
+
+      renderPhaseStart();
+      breathTimer = setTimeout(tickBreathing, 1000);
+    }
+
+    function stopBreathing() {
+      isBreathing = false;
+      clearTimeout(breathTimer);
+      breathTimer = null;
+      stopAmbientPad();
+
+      clearStepChips();
+      breathCircle.className = "breath-circle";
+      breathPhase.textContent = "Sẵn sàng";
+      breathCount.textContent = "4-7-8";
+      breathCycleInfo.textContent = 'Bấm "Bắt đầu hít thở" để chạy lặp liên tục cho đến khi bạn bấm dừng';
+
+      breathBtn.textContent = "▶ Bắt đầu hít thở";
+      breathBtn.classList.remove("btn-warm");
+      breathBtn.classList.add("btn-green");
+    }
+
+    breathBtn.addEventListener("click", () => {
+      if (!isBreathing) {
+        startBreathing();
+      } else {
+        stopBreathing();
+      }
+    });
+
+    soundToggleBtn.addEventListener("click", () => {
+      soundEnabled = !soundEnabled;
+      if (soundEnabled) {
+        soundToggleBtn.textContent = "🔊 Âm thanh: Bật";
+        if (isBreathing) {
+          initAudio();
+          startAmbientPad();
+        }
+      } else {
+        soundToggleBtn.textContent = "🔇 Âm thanh: Tắt";
+        stopAmbientPad();
+      }
+    });
+
+    // =========================================================================
+    // TÍNH NĂNG GÓC "THẢ TRÔI MUỘN PHIỀN" (CHỈ XỬ LÝ TẠI MÁY, KHÔNG LƯU TRỮ)
+    // =========================================================================
+    const worryInput = document.getElementById("worryInput");
+    const releaseBtn = document.getElementById("releaseBtn");
+    const worryMsg = document.getElementById("worryMsg");
+
+    const affirmations = [
+      "🌿 Muộn phiền đã trôi đi rồi. Hít một hơi thật sâu nhé, bạn đã làm rất tốt hôm nay.",
+      "✨ Bạn không cần phải mạnh mẽ mọi lúc. Nghỉ ngơi một chút rồi mình đi tiếp nhé!",
+      "🌤️ Mây đen rồi sẽ tan, bầu trời trong lòng bạn vẫn luôn ở đó.",
+      "💛 Cảm ơn bạn đã thành thật với cảm xúc của mình. Nếu cần người lắng nghe, Cô luôn ở đây."
+    ];
+
+    releaseBtn.addEventListener("click", () => {
+      if (!worryInput.value.trim()) {
+        showToast("Hãy viết ra vài dòng trước khi thả trôi nhé! 🌿");
+        return;
+      }
+      worryInput.classList.add("fading");
+      setTimeout(() => {
+        worryInput.value = "";
+        worryInput.classList.remove("fading");
+        const msg = affirmations[Math.floor(Math.random() * affirmations.length)];
+        worryMsg.textContent = msg;
+        worryMsg.style.display = "block";
+      }, 600);
+    });
+  </script>
+</body>
+</html>
