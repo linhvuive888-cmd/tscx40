@@ -961,10 +961,10 @@
       const now = audioCtx.currentTime;
       ambientMasterGain = audioCtx.createGain();
       ambientMasterGain.gain.setValueAtTime(0.0001, now);
-      ambientMasterGain.gain.exponentialRampToValueAtTime(0.035, now + 2.0);
+      ambientMasterGain.gain.exponentialRampToValueAtTime(0.11, now + 1.5);
       ambientMasterGain.connect(audioCtx.destination);
 
-      const freqs = [130.81, 196.0, 246.94, 293.66];
+      const freqs = [196.0, 246.94, 293.66, 392.0];
       freqs.forEach((f, idx) => {
         const osc = audioCtx.createOscillator();
         const filter = audioCtx.createBiquadFilter();
@@ -972,7 +972,7 @@
         osc.frequency.setValueAtTime(f, now);
 
         filter.type = "lowpass";
-        filter.frequency.setValueAtTime(420, now);
+        filter.frequency.setValueAtTime(750, now);
 
         osc.connect(filter);
         filter.connect(ambientMasterGain);
@@ -1020,36 +1020,38 @@
 
     function playPhaseCue(phaseCls) {
       if (!soundEnabled) return;
+      initAudio();
       if (phaseCls === "inhale") {
-        playChimeNote(523.25, 0, 1.1, 0.14);
-        playChimeNote(659.25, 0.16, 1.4, 0.12);
+        playChimeNote(523.25, 0, 1.2, 0.36);
+        playChimeNote(659.25, 0.18, 1.5, 0.32);
       } else if (phaseCls === "hold") {
-        playChimeNote(392.0, 0, 1.5, 0.13);
+        playChimeNote(392.0, 0, 1.6, 0.34);
       } else if (phaseCls === "exhale") {
-        playChimeNote(659.25, 0, 1.0, 0.12);
-        playChimeNote(523.25, 0.2, 1.6, 0.13);
+        playChimeNote(659.25, 0, 1.1, 0.32);
+        playChimeNote(523.25, 0.22, 1.7, 0.36);
       }
     }
 
     function playSecondTick(phaseCls) {
       if (!audioCtx || !soundEnabled) return;
+      if (audioCtx.state === "suspended") audioCtx.resume();
       const now = audioCtx.currentTime;
       const osc = audioCtx.createOscillator();
       const gain = audioCtx.createGain();
 
-      const freq = phaseCls === "inhale" ? 760 : phaseCls === "hold" ? 560 : 440;
-      osc.type = "sine";
+      const freq = phaseCls === "inhale" ? 820 : phaseCls === "hold" ? 620 : 480;
+      osc.type = "triangle";
       osc.frequency.setValueAtTime(freq, now);
-      osc.frequency.exponentialRampToValueAtTime(freq * 0.65, now + 0.07);
+      osc.frequency.exponentialRampToValueAtTime(freq * 0.6, now + 0.08);
 
       gain.gain.setValueAtTime(0.0001, now);
-      gain.gain.linearRampToValueAtTime(0.065, now + 0.008);
-      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.085);
+      gain.gain.linearRampToValueAtTime(0.24, now + 0.008);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.11);
 
       osc.connect(gain);
       gain.connect(audioCtx.destination);
       osc.start(now);
-      osc.stop(now + 0.1);
+      osc.stop(now + 0.12);
     }
 
     // =========================================================================
@@ -1166,8 +1168,9 @@
       soundEnabled = !soundEnabled;
       if (soundEnabled) {
         soundToggleBtn.textContent = "🔊 Âm thanh: Bật";
+        initAudio();
+        playChimeNote(523.25, 0, 0.5, 0.3);
         if (isBreathing) {
-          initAudio();
           startAmbientPad();
         }
       } else {
